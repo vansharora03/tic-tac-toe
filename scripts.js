@@ -1,3 +1,4 @@
+const startBtn = document.querySelector('.start');
 /**
  * Stores the tic-tac-toe game board
  * @type {{board: string[][]}}
@@ -28,9 +29,9 @@ const player = function(name, mark) {
  * @type {{startGame: startGame}}
  */
 const ticTacToe = (function() {
-
     let _player1 = player("Player X", "X");
     let _player2 = player("Player O", "O");
+
     const _cells = document.querySelectorAll('.cell');
     const _gameMessage = document.querySelector('.gameMessage');
 
@@ -82,8 +83,20 @@ const ticTacToe = (function() {
      * @private
      */
     const _setBoard = function() {
+        _player1 = player(document.querySelector('#playerOne').value, 'X')
+        _player2 = player(document.querySelector('#playerTwo').value, 'O');
+        let i = 0;
+        let j = 0;
         _cells.forEach(cell => {
+            if(j > 2) {
+                j = 0;
+                i++;
+            }
+            cell.classList.remove('frozen');
             cell.addEventListener("click", _addMark);
+            cell.textContent = "";
+            gameBoard.board[i][j] = "";
+            j++
         })
     }
 
@@ -107,10 +120,14 @@ const ticTacToe = (function() {
      * Stops players from altering the game board state
      * @private
      */
-    const _freezeBoard = function() {
+    const freezeBoard = function() {
         _cells.forEach(cell => {
             cell.removeEventListener("click", _addMark);
+            cell.classList.add('frozen');
         })
+        startBtn.textContent = "Restart Game"
+        startBtn.style.visibility = 'visible';
+
     }
 
     /**
@@ -161,14 +178,14 @@ const ticTacToe = (function() {
         //check for tie
         else if(!hasWon && _isBoardFull()) {
             _gameMessage.textContent = "Tie game!";
-            _freezeBoard();
+            freezeBoard();
         }
 
         //relay win message
         if(hasWon) {
             winner = (winMark === _player1.mark)? _player1 : _player2;
             _gameMessage.textContent = winner.name + " has won!";
-            _freezeBoard();
+            freezeBoard();
         }
 
     }
@@ -180,8 +197,11 @@ const ticTacToe = (function() {
         _setBoard();
     }
 
-    return{startGame};
+    return{startGame, freezeBoard};
 })();
 
-//Start game
-ticTacToe.startGame();
+//Start game when button is pressed
+startBtn.addEventListener("click", (e) => {
+    e.target.style.visibility = 'hidden';
+    ticTacToe.startGame();
+});
