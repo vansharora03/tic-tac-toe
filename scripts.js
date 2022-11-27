@@ -83,8 +83,10 @@ const ticTacToe = (function() {
      * @private
      */
     const _setBoard = function() {
-        _player1 = player((document.querySelector('#playerOne').value !== "")? document.querySelector('#playerOne').value: "X", 'X')
-        _player2 = player((document.querySelector('#playerTwo').value !== "")? document.querySelector('#playerTwo').value: "O", 'O');
+        if(startBtn.textContent === "Start Game") {
+            _player1 = player((document.querySelector('#playerOne').value !== "")? document.querySelector('#playerOne').value: "X", 'X')
+            _player2 = player((document.querySelector('#playerTwo').value !== "")? document.querySelector('#playerTwo').value: "O", 'O');
+        }
         let i = 0;
         let j = 0;
         _cells.forEach(cell => {
@@ -120,12 +122,12 @@ const ticTacToe = (function() {
      * Stops players from altering the game board state
      * @private
      */
-    const freezeBoard = function() {
+    const _freezeBoard = function() {
         _cells.forEach(cell => {
             cell.removeEventListener("click", _addMark);
             cell.classList.add('frozen');
         })
-        startBtn.textContent = "Restart Game"
+        startBtn.textContent = "Play Again"
         startBtn.style.visibility = 'visible';
 
     }
@@ -178,14 +180,14 @@ const ticTacToe = (function() {
         //check for tie
         else if(!hasWon && _isBoardFull()) {
             _gameMessage.textContent = "Tie game!";
-            freezeBoard();
+            _freezeBoard();
         }
 
         //relay win message
         if(hasWon) {
             winner = (winMark === _player1.mark)? _player1 : _player2;
             _gameMessage.textContent = winner.name + " has won!";
-            freezeBoard();
+            _freezeBoard();
         }
 
     }
@@ -195,9 +197,13 @@ const ticTacToe = (function() {
      */
     const startGame = function() {
         _setBoard();
+        if(startBtn.textContent === "Start Game") {
+            document.querySelector('.namesInput').remove();
+        }
+        _gameMessage.textContent = `${_player1.name} v.s. ${_player2.name}`;
     }
 
-    return{startGame, freezeBoard};
+    return{startGame};
 })();
 
 //Start game when button is pressed
