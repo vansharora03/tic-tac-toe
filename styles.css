@@ -1,19 +1,46 @@
+/* Colors */
+* {
+    --bg-color: #65a30d;
+    --board-color: #d9f99d;
+    --divider-color: #4d7c0f;
+    --O-color: #f59e0b;
+    --X-color: #3b82f6;
+    --startBtn-color: #d9f99d;
+    --startBtn-hover-color: #bef264;
+    --input-color: #d9f99d;
+    --main-font-color: #365314;
+    --message-color: #f7fee7;
+
+    font-family: sans-serif;
+    color: var(--main-font-color);
+}
+
+body {
+    background-color: var(--bg-color);
+    display: flex;
+    flex-direction: column;
+}
+
 /* Grid container for game board */
 .container {
-    width: 600px;
-    height: 600px;
+    margin: 5vh auto;
+    position: relative;
+    width: 51vh;
+    height: 51vh;
     display: grid;
+    background-color: var(--board-color);
+    border-radius: 8vh;
 
     /* Create equally sized blocks within the grid, 3 rows, 3 columns */
-    grid-template-columns: repeat(3, 200px);
-    grid-auto-rows: 200px;
+    grid-template-columns: repeat(3, 17vh);
+    grid-template-rows: repeat(3, 17vh);
 }
 
 /* Each cell is a member of the .container grid */
 .cell {
-    font-size: 150px;
+    font-size: 14vh;
     box-sizing: border-box;
-    border: 1px solid black;
+    font-family: sans-serif;
 
     /* Fully center mark within each cell */
     display: flex;
@@ -22,19 +49,120 @@
 }
 
 .frozen {
-    background-color: darkgrey;
+
 }
 
 label {
     margin-top: 10px;
 }
 
+label[for="playerOne"] {
+    color: var(--X-color);
+}
+
+label[for="playerTwo"] {
+    color: var(--O-color);
+}
+
 input {
     display: block;
     margin-top: 10px;
     margin-bottom: 10px;
+
+    height: 3vh;
+    width: 30vh;
 }
 
 button {
-    margin-top: 10px;
+    margin: auto;
+    align-self: center;
+    justify-self: center;
+}
+
+
+/* Divider styles */
+.divider {
+    position: absolute;
+    background-color: var(--divider-color);
+}
+
+
+.first-vert {
+    left: 16vh;
+    top: -3vh;
+    height: 57vh;
+    border-radius: 1vh;
+    width: 3%;
+}
+
+.second-vert {
+    right: 16vh;
+    top: -3vh;
+    height: 57vh;
+    border-radius: 1vh;
+    width: 3%;
+}
+
+.first-hor {
+    top: 16vh;
+    right: -3vh;
+    height: 3%;
+    border-radius: 1vh;
+    width: 57vh;
+}
+
+.second-hor {
+    bottom: 16vh;
+    right: -3vh;
+    height: 3%;
+    border-radius: 1vh;
+    width: 57vh;
+}
+
+/* Input and Label styles */
+.namesInput {
+    display: flex;
+    justify-content: space-around;
+}
+
+label {
+    font-family: sans-serif;
+    font-weight: bold;
+}
+
+input {
+    background: var(--input-color);
+    padding: 0.3vh;
+    border: none;
+    border-radius: 0.5vh;
+}
+
+#playerOne:focus {
+    outline: 0.5vh solid var(--X-color);
+}
+
+#playerTwo:focus {
+    outline: 0.5vh solid var(--O-color);
+}
+
+/* Game messages */
+.gameMessage {
+    color: var(--message-color);
+    align-self: center;
+}
+
+
+/* Button styles */
+button {
+    background: var(--startBtn-color);
+    border:none;
+    border-radius: 1vh;
+    appearance: none;
+    height: 5vh;
+    width: 15vh;
+}
+
+button:hover {
+    background: var(--startBtn-hover-color);
+    cursor: pointer;
 }

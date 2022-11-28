@@ -7,23 +7,27 @@
       <script src="scripts.js" defer></script>
 	</head>
 	<body>
-		<h1 class="title">Tic-Tac-Toe</h1>
+		<h1 class="title">TIC-TAC-TOE</h1>
 		<h2 class="gameMessage"></h2>
 		<div class="namesInput">
-			<label for="playerOne">Player X Name</label><input type="text" id="playerOne">
-			<label for="playerTwo">Player O Name</label><input type="text" id="playerTwo">
+			<div class="playerOneInfo"><label for="playerOne">P1</label><input type="text" id="playerOne"></div>
+			<div class="playerTwoInfo"><label for="playerTwo">P2</label><input type="text" id="playerTwo"></div>
 		</div>
-		<button class="start">Start Game</button>
-		<div class="container">
-			<div class="cell topLeft frozen"></div>
-			<div class="cell topMiddle frozen"></div>
-			<div class="cell topRight frozen"></div>
-			<div class="cell middleLeft frozen"></div>
-			<div class="cell middleMiddle frozen"></div>
-			<div class="cell middleRight frozen"></div>
-			<div class="cell bottomLeft frozen"></div>
-			<div class="cell bottomMiddle frozen"></div>
-			<div class="cell bottomRight frozen"></div>
+			<button class="start">Start Game</button>
+			<div class="container">
+				<div class="cell topLeft frozen"></div>
+				<div class="cell topMiddle frozen"></div>
+				<div class="cell topRight frozen"></div>
+				<div class="cell middleLeft frozen"></div>
+				<div class="cell middleMiddle frozen"></div>
+				<div class="cell middleRight frozen"></div>
+				<div class="cell bottomLeft frozen"></div>
+				<div class="cell bottomMiddle frozen"></div>
+				<div class="cell bottomRight frozen"></div>
+				<div class="first-vert divider"></div>
+				<div class="second-vert divider"></div>
+				<div class="first-hor divider"></div>
+				<div class="second-hor divider"></div>
 		</div>
 	</body>
 </html>

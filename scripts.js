@@ -71,6 +71,11 @@ const ticTacToe = (function() {
      */
     const _addMark = function(e) {
         if(e.target.textContent === "") {
+            if(_playerTurn === "O") {
+                e.target.style.color = "#f59e0b";
+            } else {
+                e.target.style.color = "#3b82f6";
+            }
             e.target.textContent = _playerTurn;
             _updateBoard();
             _toggleTurn();
