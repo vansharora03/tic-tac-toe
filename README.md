@@ -1,2 +1,2 @@
 # tic-tac-toe
-A simple web tic-tac-toe game.
+A simple web tic-tac-toe game for two players.
