@@ -1,5 +1,9 @@
 /* Colors */
 * {
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+
     --bg-color: #65a30d;
     --board-color: #d9f99d;
     --divider-color: #4d7c0f;

@@ -88,6 +88,7 @@ const ticTacToe = (function() {
      * @private
      */
     const _setBoard = function() {
+        _playerTurn = _player1.mark;
         if(startBtn.textContent === "Start Game") {
             _player1 = player((document.querySelector('#playerOne').value !== "")? document.querySelector('#playerOne').value: "X", 'X')
             _player2 = player((document.querySelector('#playerTwo').value !== "")? document.querySelector('#playerTwo').value: "O", 'O');
